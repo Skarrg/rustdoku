@@ -63,6 +63,19 @@ impl GameboardView {
 
     /// draw gameboard
     pub fn draw<G: Graphics>(&self, controller: &GameboardController, c: &Context, g: &mut G) {
+        use graphics::{Line, Rectangle};
+
+        let ref settings = self.settings;
+        let board_rect = [
+            settings.position[0], settings.position[1],
+            settings.size, settings.size,
+        ];
+
+        //draw board background
+        Rectangle::new (settings.background_color)
+            .draw(board_rect, &c.draw_state, c.transform, g);
         
+        //draw cell borders
+        // current spot https://github.com/PistonDevelopers/Piston-Tutorials/blob/master/sudoku/chp-05.md
     }
 }
